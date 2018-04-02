@@ -2,11 +2,6 @@
 # Note the node:slim image doesn't have node-gyp
 FROM node:8-slim
 
-# Uncomment the next three lines if you want GPIO for Pi
-# RUN apt-get update && apt-get install -yq \
-#     rpi.gpio && \
-#     apt-get clean && rm -rf /var/lib/apt/lists/*
-
 WORKDIR /usr/src/app
 
 COPY package.json package.json
