@@ -2,7 +2,8 @@
 old_rev=`git log -1 --pretty="%H"`
 echo $old_rev
 while [ 1 ]; do
-    new_rev=`git rev-parse origin/master`
+    #new_rev=`git rev-parse origin/master`
+    new-rev=`git ls-remote $(git config --get remote.origin.url) HEAD | cut -f 1`
     if [ $new_rev != $old_rev ]; then
         old_rev=$new_rev
         git fetch --all
