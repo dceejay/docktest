@@ -1,1 +1,225 @@
-[]
+[
+    {
+        "id": "66742658.e5d518",
+        "type": "tab",
+        "label": "Flow 1",
+        "disabled": false,
+        "info": ""
+    },
+    {
+        "id": "73aae90d.c9f448",
+        "type": "debug",
+        "z": "66742658.e5d518",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "false",
+        "x": 490,
+        "y": 160,
+        "wires": []
+    },
+    {
+        "id": "d8818634.880238",
+        "type": "inject",
+        "z": "66742658.e5d518",
+        "name": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 140,
+        "y": 160,
+        "wires": [
+            [
+                "73aae90d.c9f448"
+            ]
+        ]
+    },
+    {
+        "id": "e3248ef9.65d01",
+        "type": "http in",
+        "z": "66742658.e5d518",
+        "name": "",
+        "url": "/test",
+        "method": "get",
+        "upload": false,
+        "swaggerDoc": "",
+        "x": 120,
+        "y": 240,
+        "wires": [
+            [
+                "a5241c11.6a631"
+            ]
+        ]
+    },
+    {
+        "id": "8c7a76e7.b9e848",
+        "type": "http response",
+        "z": "66742658.e5d518",
+        "name": "",
+        "statusCode": "",
+        "headers": {},
+        "x": 470,
+        "y": 240,
+        "wires": []
+    },
+    {
+        "id": "a5241c11.6a631",
+        "type": "function",
+        "z": "66742658.e5d518",
+        "name": "",
+        "func": "msg.payload = \"OK\";\nreturn msg;",
+        "outputs": 1,
+        "noerr": 0,
+        "x": 290,
+        "y": 240,
+        "wires": [
+            [
+                "8c7a76e7.b9e848",
+                "73aae90d.c9f448"
+            ]
+        ]
+    },
+    {
+        "id": "1f557615.30c6ea",
+        "type": "rpi-lcd",
+        "z": "66742658.e5d518",
+        "name": "",
+        "pins": "26,24,22,18,16,12",
+        "x": 480,
+        "y": 320,
+        "wires": []
+    },
+    {
+        "id": "dcc510ad.6a6d",
+        "type": "inject",
+        "z": "66742658.e5d518",
+        "name": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "date",
+        "repeat": "1",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 150,
+        "y": 320,
+        "wires": [
+            [
+                "1f557615.30c6ea"
+            ]
+        ]
+    },
+    {
+        "id": "cfe673dc.24386",
+        "type": "inject",
+        "z": "66742658.e5d518",
+        "name": "",
+        "topic": "",
+        "payload": "2:Hello Dave",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "5",
+        "x": 150,
+        "y": 360,
+        "wires": [
+            [
+                "1f557615.30c6ea"
+            ]
+        ]
+    },
+    {
+        "id": "bd941b6d.1b60f8",
+        "type": "inject",
+        "z": "66742658.e5d518",
+        "name": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "str",
+        "repeat": "2",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 130,
+        "y": 80,
+        "wires": [
+            [
+                "ddc5cbe3.aafe88"
+            ]
+        ]
+    },
+    {
+        "id": "ddc5cbe3.aafe88",
+        "type": "trigger",
+        "z": "66742658.e5d518",
+        "op1": "1",
+        "op2": "0",
+        "op1type": "str",
+        "op2type": "str",
+        "duration": "1",
+        "extend": false,
+        "units": "s",
+        "reset": "",
+        "bytopic": "all",
+        "name": "",
+        "x": 300,
+        "y": 80,
+        "wires": [
+            [
+                "bd26c339.29a96"
+            ]
+        ]
+    },
+    {
+        "id": "bd26c339.29a96",
+        "type": "rpi-gpio out",
+        "z": "66742658.e5d518",
+        "name": "",
+        "pin": "40",
+        "set": "",
+        "level": "0",
+        "freq": "",
+        "out": "out",
+        "x": 480,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "59b0eeec.95ee7",
+        "type": "rpi-gpio in",
+        "z": "66742658.e5d518",
+        "name": "",
+        "pin": "38",
+        "intype": "up",
+        "debounce": "25",
+        "read": true,
+        "x": 190,
+        "y": 460,
+        "wires": [
+            [
+                "5edb3b78.89a144"
+            ]
+        ]
+    },
+    {
+        "id": "5edb3b78.89a144",
+        "type": "debug",
+        "z": "66742658.e5d518",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "x": 450,
+        "y": 460,
+        "wires": []
+    }
+]

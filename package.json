@@ -2,7 +2,10 @@
     "name": "docktest",
     "description": "Simple test for Node-RED and Docker",
     "version": "0.0.1",
-    "dependencies": {},
+    "dependencies": {
+        "node-red": "*",
+        "node-red-node-pilcd": "0.0.9"
+    },
     "node-red": {
         "settings": {
             "flowFile": "flow.json",
