@@ -1,6 +1,7 @@
 old_rev="none"
 while [ 1 ]; do
-    new_rev=`git rev-parse origin/master`
+    #new_rev=`git rev-parse origin/master`
+    new_rev=`git ls-remote http://github.com/dceejay/docktest.git HEAD` 
     if [ $new_rev != $old_rev ]; then
         old_rev=$new_rev
         git pull
