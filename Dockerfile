@@ -1,10 +1,6 @@
 # base-image for node on any machine using a template variable,
-# see more about dockerfile templates here: http://docs.resin.io/deployment/docker-templates/
-# and about resin base images here: http://docs.resin.io/runtime/resin-base-images/
 # Note the node:slim image doesn't have node-gyp
-
-#FROM resin/%%RESIN_MACHINE_NAME%%-node:8-slim
-FROM resin/raspberrypi3-alpine-node:8-slim
+FROM node:8-slim
 
 # Uncomment the next three lines if you want GPIO for Pi
 # RUN apt-get update && apt-get install -yq \
@@ -19,7 +15,7 @@ RUN JOBS=MAX npm install --production --unsafe-perm --no-optional && npm cache c
 
 COPY . ./
 
-ENV INITSYSTEM on
+ENV HOST_IP=172.17.0.1
 ENV NODE_PATH=/usr/src/app/node_modules
 
 EXPOSE 1880
