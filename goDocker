@@ -1,9 +1,12 @@
-old_rev="none"
+#! /bin/bash
+old_rev=`git log -1 --pretty="%H"`
+echo $old_rev
 while [ 1 ]; do
     new_rev=`git rev-parse origin/master`
     if [ $new_rev != $old_rev ]; then
         old_rev=$new_rev
-        git pull
+        git fetch --all
+        git reset --hard origin/master
         docker build -t docktest .
         docker stop mydocktest
         docker rm mydocktest
