@@ -1,8 +1,6 @@
 # Simple Dockerfile that you can build in the node-red directory
-#FROM resin/raspberry-pi-alpine-node:8-onbuild
-FROM resin/raspberrypi3-alpine-node:8-slim
-#FROM node:8-onbuild
 
+FROM node:8-onbuild
 VOLUME /root/.node-red
 EXPOSE 1880
 

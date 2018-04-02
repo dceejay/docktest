@@ -43,40 +43,7 @@
         "x": 300,
         "y": 80,
         "wires": [
-            [
-                "bd26c339.29a96"
-            ]
-        ]
-    },
-    {
-        "id": "bd26c339.29a96",
-        "type": "rpi-gpio out",
-        "z": "66742658.e5d518",
-        "name": "",
-        "pin": "40",
-        "set": "",
-        "level": "0",
-        "freq": "",
-        "out": "out",
-        "x": 500,
-        "y": 80,
-        "wires": []
-    },
-    {
-        "id": "59b0eeec.95ee7",
-        "type": "rpi-gpio in",
-        "z": "66742658.e5d518",
-        "name": "",
-        "pin": "38",
-        "intype": "up",
-        "debounce": "25",
-        "read": true,
-        "x": 140,
-        "y": 160,
-        "wires": [
-            [
-                "5edb3b78.89a144"
-            ]
+            []
         ]
     },
     {
@@ -92,5 +59,41 @@
         "x": 450,
         "y": 160,
         "wires": []
+    },
+    {
+        "id": "80f5fb5b.38a1e8",
+        "type": "pi-gpiod out",
+        "z": "66742658.e5d518",
+        "name": "",
+        "host": "localhost",
+        "port": 8888,
+        "pin": "21",
+        "set": "",
+        "level": "0",
+        "out": "out",
+        "sermin": "1000",
+        "sermax": "2000",
+        "x": 440,
+        "y": 80,
+        "wires": []
+    },
+    {
+        "id": "59d0082d.1e6018",
+        "type": "pi-gpiod in",
+        "z": "66742658.e5d518",
+        "name": "",
+        "host": "localhost",
+        "port": 8888,
+        "pin": "20",
+        "intype": "PUD_OFF",
+        "debounce": "25",
+        "read": false,
+        "x": 130,
+        "y": 160,
+        "wires": [
+            [
+                "5edb3b78.89a144"
+            ]
+        ]
     }
 ]
