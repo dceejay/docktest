@@ -8,8 +8,6 @@ while [ 1 ]; do
         docker stop mydocktest
         docker rm mydocktest
         docker run -d -p 1880:1880 --name mydocktest docktest
-    else
-        echo "."
     fi
     sleep 60
 done
