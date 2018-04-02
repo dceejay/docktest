@@ -11,5 +11,8 @@
             "flowFile": "flow.json",
             "credentialsFile": "flow_cred.json"
         }
+    },
+    "scripts": {
+        "start": "node node_modules/node-red/red.js -u . flow.json"
     }
 }

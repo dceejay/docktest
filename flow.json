@@ -32,7 +32,7 @@
         "crontab": "",
         "once": false,
         "onceDelay": 0.1,
-        "x": 140,
+        "x": 180,
         "y": 160,
         "wires": [
             [
@@ -200,7 +200,7 @@
         "intype": "up",
         "debounce": "25",
         "read": true,
-        "x": 190,
+        "x": 140,
         "y": 460,
         "wires": [
             [
