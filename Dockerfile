@@ -1,24 +1,27 @@
-# Simple Dockerfile that you can build in the node-red directory
-#FROM resin/raspberry-pi-alpine-node:8-onbuild
-FROM resin/raspberrypi3-alpine-node:8-slim
-#FROM node:8-onbuild
+# base-image for node on any machine using a template variable,
+# see more about dockerfile templates here: http://docs.resin.io/deployment/docker-templates/
+# and about resin base images here: http://docs.resin.io/runtime/resin-base-images/
+# Note the node:slim image doesn't have node-gyp
 
-VOLUME /root/.node-red
+#FROM resin/%%RESIN_MACHINE_NAME%%-node:8-slim
+FROM resin/raspberrypi3-alpine-node:8-slim
+
+# Uncomment the next three lines if you want GPIO for Pi
+# RUN apt-get update && apt-get install -yq \
+#     rpi.gpio && \
+#     apt-get clean && rm -rf /var/lib/apt/lists/*
+
+WORKDIR /usr/src/app
+
+COPY package.json package.json
+
+RUN JOBS=MAX npm install --production --unsafe-perm --no-optional && npm cache clean --force && rm -rf /tmp/*
+
+COPY . ./
+
+ENV INITSYSTEM on
+ENV NODE_PATH=/usr/src/app/node_modules
+
 EXPOSE 1880
 
-# Use this to build the image from within the node-red directory
-#  docker build -t node-red-project .
-
-# and use this to run it (assumes you want port 1880 mapped direct)
-#  docker run -it -p 1880:1880 --name mynodered node-red-project
-
-# Use   docker stop mynodered
-# and   docker start mynodered
-# to stop and start without losing the flows files.
-# and   docker attach mynodered
-# to re-attach the terminal to see the output log
-
-# (If you use run again it will create a whole new "machine" with a clean flows file)
-
-# Use   docker inspect mynodered | grep IPA
-# to find the ip address to browse to.
+CMD ["npm", "start"]
