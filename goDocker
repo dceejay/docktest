@@ -1,0 +1,14 @@
+old_rev="none"
+while [ 1 ]; do
+    new_rev=`git rev-parse origin/master`
+    if [ $new_rev != $old_rev ]; then
+        old_rev=$new_rev
+        git pull
+        docker build -t docktest .
+        docker stop mydocktest
+        docker rm mydocktest
+        docker run -d -p 1880:1880 --name mydocktest docktest
+        echo $old_rev
+    fi
+    sleep 60
+done
