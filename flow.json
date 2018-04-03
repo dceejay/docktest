@@ -97,5 +97,58 @@
                 "5edb3b78.89a144"
             ]
         ]
+    },
+    {
+        "id": "e9cfc547.2fded8",
+        "type": "openweathermap",
+        "z": "66742658.e5d518",
+        "name": "",
+        "wtype": "current",
+        "lon": "",
+        "lat": "",
+        "city": "Winchester",
+        "country": "UK",
+        "language": "en",
+        "x": 310,
+        "y": 260,
+        "wires": [
+            [
+                "10b7bfc0.b3f27"
+            ]
+        ]
+    },
+    {
+        "id": "10b7bfc0.b3f27",
+        "type": "debug",
+        "z": "66742658.e5d518",
+        "name": "",
+        "active": true,
+        "tosidebar": true,
+        "console": false,
+        "tostatus": false,
+        "complete": "payload",
+        "x": 510,
+        "y": 260,
+        "wires": []
+    },
+    {
+        "id": "55926cbb.756df4",
+        "type": "inject",
+        "z": "66742658.e5d518",
+        "name": "",
+        "topic": "",
+        "payload": "",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": true,
+        "onceDelay": "1",
+        "x": 130,
+        "y": 260,
+        "wires": [
+            [
+                "e9cfc547.2fded8"
+            ]
+        ]
     }
 ]
