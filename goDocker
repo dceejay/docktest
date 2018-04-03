@@ -1,17 +1,17 @@
 #! /bin/bash
 old_rev=`git log -1 --pretty="%H"`
+thisdir="$(basename "$(pwd)")"
 echo $old_rev
 while [ 1 ]; do
-    #new_rev=`git rev-parse origin/master`
-    new_rev=`git ls-remote $(git config --get remote.origin.url) HEAD | cut -f 1`
+    new_rev=`git ls-remote "$(git config --get remote.origin.url)" HEAD | cut -f 1`
     if [ $new_rev != $old_rev ]; then
         old_rev=$new_rev
         git fetch --all
         git reset --hard origin/master
-        docker build -t docktest .
-        docker stop mydocktest
-        docker rm mydocktest
-        docker run -d -p 1880:1880 --name mydocktest docktest
+        docker build -t $thisdir .
+        docker stop my_$thisdir
+        docker rm my_$thisdir
+        docker run -d -p 1880:1880 --name my_$thisdir $thisdir
         echo $old_rev
     fi
     sleep 60
