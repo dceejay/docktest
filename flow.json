@@ -7,6 +7,12 @@
         "info": ""
     },
     {
+        "id": "89c499c4.860328",
+        "type": "twitter-credentials",
+        "z": "",
+        "screen_name": "@ceejay"
+    },
+    {
         "id": "bd941b6d.1b60f8",
         "type": "inject",
         "z": "66742658.e5d518",
@@ -97,5 +103,35 @@
                 "5edb3b78.89a144"
             ]
         ]
+    },
+    {
+        "id": "f1e20041.35407",
+        "type": "inject",
+        "z": "66742658.e5d518",
+        "name": "",
+        "topic": "",
+        "payload": "D @ceejay Hi Dave",
+        "payloadType": "str",
+        "repeat": "",
+        "crontab": "",
+        "once": false,
+        "onceDelay": 0.1,
+        "x": 190,
+        "y": 300,
+        "wires": [
+            [
+                "c44272f0.3bfa9"
+            ]
+        ]
+    },
+    {
+        "id": "c44272f0.3bfa9",
+        "type": "twitter out",
+        "z": "66742658.e5d518",
+        "twitter": "89c499c4.860328",
+        "name": "Tweet",
+        "x": 420,
+        "y": 300,
+        "wires": []
     }
 ]

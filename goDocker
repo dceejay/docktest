@@ -1,8 +1,9 @@
 #! /bin/bash
-#old_rev=`git log -1 --pretty="%H"`
 old_rev="none"
+#old_rev=`git log -1 --pretty="%H"`
+#echo $old_rev
 thisdir="$(basename "$(pwd)")"
-echo $old_rev
+
 while [ 1 ]; do
     new_rev=`git ls-remote "$(git config --get remote.origin.url)" HEAD | cut -f 1`
     if [ $new_rev != $old_rev ]; then
