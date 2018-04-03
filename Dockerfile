@@ -1,6 +1,8 @@
 # base-image for node on any machine using a template variable,
 # Note the node:slim image doesn't have node-gyp
-FROM node:8-slim
+#FROM node:8-slim
+# For Pi...
+FROM arm32v7/node:8-slim
 
 WORKDIR /usr/src/app
 
