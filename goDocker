@@ -13,7 +13,7 @@ while [ 1 ]; do
         docker build -t $thisdir .
         docker stop my_$thisdir
         docker rm my_$thisdir
-        docker run -d -p 1880:1880 --name my_$thisdir $thisdir
+        docker run -d -p 1880:1880 -e NRKEY=$ANARCHY --name my_$thisdir $thisdir
         echo $old_rev
     fi
     sleep 60
