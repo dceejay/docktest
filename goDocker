@@ -1,5 +1,6 @@
 #! /bin/bash
-old_rev=`git log -1 --pretty="%H"`
+#old_rev=`git log -1 --pretty="%H"`
+old_rev="none"
 thisdir="$(basename "$(pwd)")"
 echo $old_rev
 while [ 1 ]; do
