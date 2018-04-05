@@ -2,19 +2,27 @@
 old_rev="none"
 #old_rev=`git log -1 --pretty="%H"`
 #echo $old_rev
+
+# Get directory name as project name for name of docker image
 thisdir="$(basename "$(pwd)")"
 
 while [ 1 ]; do
     new_rev=`git ls-remote "$(git config --get remote.origin.url)" HEAD | cut -f 1`
     if [ $new_rev != $old_rev ]; then
         old_rev=$new_rev
+        echo "SHA now "$old_rev
+
+        # force overwrite of local files with remote
         git fetch --all
         git reset --hard origin/master
+
+        # re-build docker image
         docker build -t $thisdir .
+        # stop and remove existing
         docker stop my_$thisdir
         docker rm my_$thisdir
-        docker run -d -p 1880:1880 -e NRKEY=$ANARCHY --name my_$thisdir $thisdir
-        echo $old_rev
+        # restart new
+        docker run -d -p 1880:1880 -e NODE_RED_CREDENTIAL_SECRET=$ANARCHY --name my_$thisdir $thisdir
     fi
-    sleep 60
+    sleep 120
 done
