@@ -174,12 +174,12 @@
         "topic": "",
         "payload": "",
         "payloadType": "str",
-        "repeat": "1",
+        "repeat": "0.5",
         "crontab": "",
         "once": false,
         "onceDelay": 0.1,
-        "x": 150,
-        "y": 440,
+        "x": 130,
+        "y": 520,
         "wires": [
             [
                 "990e92ed.160ad"
@@ -194,8 +194,8 @@
         "func": "context.count = (context.count || 0) + 1;\nvar count = context.count;\n\nreturn [{payload:count&1},\n        {payload:(count&2)/2},\n        {payload:(count&4)/4},\n        {payload:(count&8)/8},\n        {payload:(count&16)/16},\n        {payload:(count&32)/32},\n        {payload:(count&64)/64},\n        {payload:(count&128)/128}\n    ];",
         "outputs": 8,
         "noerr": 0,
-        "x": 270,
-        "y": 440,
+        "x": 290,
+        "y": 520,
         "wires": [
             [
                 "8da1e608.2a7a88"
