@@ -3,9 +3,9 @@
     "description": "Simple test for Node-RED and Docker",
     "version": "0.0.1",
     "dependencies": {
-        "node-red": "*",
         "node-red-node-pi-gpiod": "^0.0.7",
-        "node-red-node-openweathermap": "^0.2.1"
+        "node-red-node-openweathermap": "^0.2.1",
+        "node-red": "0.18.4"
     },
     "node-red": {
         "settings": {
