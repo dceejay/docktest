@@ -34,13 +34,13 @@
         "op2": "0",
         "op1type": "num",
         "op2type": "num",
-        "duration": "1.5",
+        "duration": "1",
         "extend": false,
         "units": "s",
         "reset": "",
         "bytopic": "all",
         "name": "",
-        "x": 310,
+        "x": 300,
         "y": 80,
         "wires": [
             [
@@ -167,34 +167,7 @@
         "wires": []
     },
     {
-        "id": "ce7d76f1.e62388",
-        "type": "rpi-liter",
-        "z": "66742658.e5d518",
-        "name": "",
-        "pin": "pi-liter",
-        "dir": "",
-        "x": 460,
-        "y": 400,
-        "wires": []
-    },
-    {
-        "id": "930a1c9a.9724c",
-        "type": "function",
-        "z": "66742658.e5d518",
-        "name": "",
-        "func": "context.count = (context.count || 0) + 1;\nmsg.payload = context.count;\nreturn msg;",
-        "outputs": 1,
-        "noerr": 0,
-        "x": 290,
-        "y": 400,
-        "wires": [
-            [
-                "ce7d76f1.e62388"
-            ]
-        ]
-    },
-    {
-        "id": "9506c54b.7b5558",
+        "id": "b5aab6a.a007448",
         "type": "inject",
         "z": "66742658.e5d518",
         "name": "",
@@ -205,12 +178,185 @@
         "crontab": "",
         "once": false,
         "onceDelay": 0.1,
-        "x": 130,
-        "y": 400,
+        "x": 150,
+        "y": 440,
         "wires": [
             [
-                "930a1c9a.9724c"
+                "990e92ed.160ad"
             ]
         ]
+    },
+    {
+        "id": "990e92ed.160ad",
+        "type": "function",
+        "z": "66742658.e5d518",
+        "name": "",
+        "func": "context.count = (context.count || 0) + 1;\nvar count = context.count;\n\nreturn [{payload:count&1},\n        {payload:(count&2)/2},\n        {payload:(count&4)/4},\n        {payload:(count&8)/8},\n        {payload:(count&16)/16},\n        {payload:(count&32)/32},\n        {payload:(count&64)/64},\n        {payload:(count&128)/128}\n    ];",
+        "outputs": 8,
+        "noerr": 0,
+        "x": 270,
+        "y": 440,
+        "wires": [
+            [
+                "8da1e608.2a7a88"
+            ],
+            [
+                "df8e6fe6.2eb99"
+            ],
+            [
+                "20a3b3f3.35565c"
+            ],
+            [
+                "93551ae0.2858e8"
+            ],
+            [
+                "1513f932.57c0f7"
+            ],
+            [
+                "20a0c336.847b4c"
+            ],
+            [
+                "d1140970.da0728"
+            ],
+            [
+                "dbb9bc60.db0ec"
+            ]
+        ]
+    },
+    {
+        "id": "8da1e608.2a7a88",
+        "type": "pi-gpiod out",
+        "z": "66742658.e5d518",
+        "name": "",
+        "host": "$(HOST_IP)",
+        "port": 8888,
+        "pin": "17",
+        "set": "",
+        "level": "0",
+        "out": "out",
+        "sermin": "1000",
+        "sermax": "2000",
+        "x": 500,
+        "y": 380,
+        "wires": []
+    },
+    {
+        "id": "df8e6fe6.2eb99",
+        "type": "pi-gpiod out",
+        "z": "66742658.e5d518",
+        "name": "",
+        "host": "$(HOST_IP)",
+        "port": 8888,
+        "pin": "4",
+        "set": "",
+        "level": "0",
+        "out": "out",
+        "sermin": "1000",
+        "sermax": "2000",
+        "x": 490,
+        "y": 420,
+        "wires": []
+    },
+    {
+        "id": "20a3b3f3.35565c",
+        "type": "pi-gpiod out",
+        "z": "66742658.e5d518",
+        "name": "",
+        "host": "$(HOST_IP)",
+        "port": 8888,
+        "pin": "18",
+        "set": "",
+        "level": "0",
+        "out": "out",
+        "sermin": "1000",
+        "sermax": "2000",
+        "x": 500,
+        "y": 460,
+        "wires": []
+    },
+    {
+        "id": "93551ae0.2858e8",
+        "type": "pi-gpiod out",
+        "z": "66742658.e5d518",
+        "name": "",
+        "host": "$(HOST_IP)",
+        "port": 8888,
+        "pin": "27",
+        "set": "",
+        "level": "0",
+        "out": "out",
+        "sermin": "1000",
+        "sermax": "2000",
+        "x": 500,
+        "y": 500,
+        "wires": []
+    },
+    {
+        "id": "1513f932.57c0f7",
+        "type": "pi-gpiod out",
+        "z": "66742658.e5d518",
+        "name": "",
+        "host": "$(HOST_IP)",
+        "port": 8888,
+        "pin": "22",
+        "set": "",
+        "level": "0",
+        "out": "out",
+        "sermin": "1000",
+        "sermax": "2000",
+        "x": 500,
+        "y": 540,
+        "wires": []
+    },
+    {
+        "id": "20a0c336.847b4c",
+        "type": "pi-gpiod out",
+        "z": "66742658.e5d518",
+        "name": "",
+        "host": "$(HOST_IP)",
+        "port": 8888,
+        "pin": "23",
+        "set": "",
+        "level": "0",
+        "out": "out",
+        "sermin": "1000",
+        "sermax": "2000",
+        "x": 500,
+        "y": 580,
+        "wires": []
+    },
+    {
+        "id": "d1140970.da0728",
+        "type": "pi-gpiod out",
+        "z": "66742658.e5d518",
+        "name": "",
+        "host": "$(HOST_IP)",
+        "port": 8888,
+        "pin": "24",
+        "set": "",
+        "level": "0",
+        "out": "out",
+        "sermin": "1000",
+        "sermax": "2000",
+        "x": 500,
+        "y": 620,
+        "wires": []
+    },
+    {
+        "id": "dbb9bc60.db0ec",
+        "type": "pi-gpiod out",
+        "z": "66742658.e5d518",
+        "name": "",
+        "host": "$(HOST_IP)",
+        "port": 8888,
+        "pin": "25",
+        "set": "",
+        "level": "0",
+        "out": "out",
+        "sermin": "1000",
+        "sermax": "2000",
+        "x": 500,
+        "y": 660,
+        "wires": []
     }
 ]
