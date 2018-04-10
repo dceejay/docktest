@@ -1,7 +1,8 @@
 #! /bin/bash
-old_rev="none"
-#old_rev=`git log -1 --pretty="%H"`
-#echo $old_rev
+# You need to set environment variable $ANARCHY to your Node-RED credential secret.
+
+# Always start by getting latest copy.
+old_rev="none"  
 
 # Get directory name as project name for name of docker image
 thisdir="$(basename "$(pwd)")"
