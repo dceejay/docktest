@@ -2,7 +2,7 @@
 # You need to set environment variable $ANARCHY to your Node-RED credential secret.
 
 # Always start by getting latest copy.
-old_rev="none"  
+old_rev="none"
 
 # Get directory name as project name for name of docker image
 thisdir="$(basename "$(pwd)")"
@@ -22,6 +22,7 @@ while [ 1 ]; do
         # stop and remove existing
         docker stop my_$thisdir
         docker rm my_$thisdir
+        docker images prune -f
         # restart new
         docker run -d -p 1880:1880 -e NODE_RED_CREDENTIAL_SECRET=$ANARCHY --name my_$thisdir $thisdir
     fi
