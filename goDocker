@@ -22,7 +22,7 @@ while [ 1 ]; do
         # stop and remove existing
         docker stop my_$thisdir
         docker rm my_$thisdir
-        docker images prune -f
+        docker image prune -f
         # restart new
         docker run -d -p 1880:1880 -e NODE_RED_CREDENTIAL_SECRET=$ANARCHY --name my_$thisdir $thisdir
     fi
